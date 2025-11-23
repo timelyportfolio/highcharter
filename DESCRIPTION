@@ -47,7 +47,6 @@ Imports:
     tidyr,
     htmltools,
     jsonlite,
-    igraph,
     lubridate,
     yaml,
     rlang (>= 0.1.1),
