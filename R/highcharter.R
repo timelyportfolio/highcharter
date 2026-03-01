@@ -269,7 +269,8 @@ highchart_dep <- function() {
   htmltools::htmlDependency(
     name = "highcharts",
     version = "9.3.1",
-    src = c(href="https://code.highcharts.com/9.3.1"),
+    src = c(file = system.file("htmlwidgets/lib/highcharts", package="highcharter")),
+    # src = c(href="https://code.highcharts.com/9.3.1"),
     script = c(
       "highcharts.js",
       "highcharts-3d.js",
