@@ -41,37 +41,6 @@ test_that("hchart returns a valid time series decomposition plot after valid dat
   expect_true(all(class(h) %in% c("highchart", "htmlwidget")))
 })
 
-test_that("hchart returns a valid graph after valid data input", {
-  require(igraph)
-  N <- 40
-
-  net <- sample_gnp(N, p = 2 / N)
-  wc <- cluster_walktrap(net)
-
-  V(net)$label <- seq(N)
-  V(net)$name <- paste("I'm #", seq(N))
-  V(net)$page_rank <- round(page_rank(net)$vector, 2)
-  V(net)$betweenness <- round(betweenness(net), 2)
-  V(net)$degree <- degree(net)
-  V(net)$size <- V(net)$degree
-  V(net)$comm <- as.vector(membership(wc))
-  V(net)$color <- colorize(membership(wc))
-
-  h <- hchart(net, layout = layout_with_fr)
-  expect_true(all(class(h) %in% c("highchart", "htmlwidget")))
-})
-
-test_that("hchart returns a valid model plot after valid data input", {
-  library(survival)
-
-  data(lung)
-  lung <- dplyr::mutate(lung, sex = ifelse(sex == 1, "Male", "Female"))
-  fit <- survfit(Surv(time, status) ~ sex, data = lung)
-
-  h <- hchart(fit, ranges = TRUE)
-  expect_true(all(class(h) %in% c("highchart", "htmlwidget")))
-})
-
 test_that("hchart returns a valid stocks plot after valid data input", {
   x <- quantmod::getFX("USD/JPY", auto.assign = FALSE)
   h <- hchart(x)

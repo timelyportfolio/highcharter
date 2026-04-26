@@ -56,7 +56,6 @@ Suggests:
     rmarkdown,
     survival,
     quantmod,
-    igraph,
     ggplot2,
     httr,
     viridisLite,

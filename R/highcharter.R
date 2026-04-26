@@ -73,7 +73,8 @@ highchart <- function(hc_opts = list(),
       # knitr.figure = FALSE,
       browser.fill = TRUE,
       padding = 0
-    )
+    ),
+    dependencies = list(shiny:::jqueryDependency(), highchart_dep(), highcharter_dep())
   )
 
   # set sizing for `shinyRenderer`
@@ -174,4 +175,105 @@ renderHighchartZ <- function(expr, env = parent.frame(), quoted = FALSE) {
     expr <- substitute(expr)
   } # force quoted
   shinyRenderWidget(expr, highchartOutputZ, env, quoted = TRUE)
+}
+
+highchart_dep <- function() {
+  htmltools::htmlDependency(
+    name = "highcharts",
+    version = "12.6.0",
+    src = c(file = system.file("htmlwidgets/lib/highcharts", package="highcharter")),
+    # src = c(href="https://code.highcharts.com/12.6.0"),
+    script = c(
+      "highcharts.js",
+      "highcharts-3d.js",
+      "highcharts-more.js",
+      "modules/stock.js",
+      "modules/data.js",
+      "modules/exporting.js",
+      "modules/offline-exporting.js",
+      "modules/drilldown.js",
+      "modules/item-series.js",
+      "modules/overlapping-datalabels.js",
+      "modules/annotations.js",
+      "modules/export-data.js",
+      "modules/funnel.js",
+      "modules/heatmap.js",
+      "modules/treemap.js",
+      "modules/sankey.js",
+      "modules/dependency-wheel.js",
+      "modules/organization.js",
+      "modules/solid-gauge.js",
+      "modules/streamgraph.js",
+      "modules/sunburst.js",
+      "modules/vector.js",
+      "modules/wordcloud.js",
+      "modules/xrange.js",
+      "modules/tilemap.js",
+      "modules/venn.js",
+      "modules/gantt.js",
+      "modules/timeline.js",
+      "modules/parallel-coordinates.js",
+      "modules/bullet.js",
+      "modules/coloraxis.js",
+      "modules/dumbbell.js",
+      "modules/lollipop.js",
+      "modules/series-label.js",
+  #    "modules/map.js",
+  #    "modules/accessibility.js",
+  #    "modules/drag-panes.js",
+  #    "modules/marker-clusters.js",
+  #    "modules/datagrouping.js",
+  #    "modules/dotplot.js",
+  #    "modules/funnel3d.js",
+  #    "modules/pyramid3d.js",
+  #    "modules/static-scale.js",
+  #    "modules/grid-axis.js",
+  #    "modules/broken-axis.js",
+  #    "modules/pareto.js",
+  #    "modules/boost-canvas.js",
+  #    "modules/histogram-bellcurve.js",
+  #    "modules/no-data-to-display.js",
+  #    "modules/oldie.js",
+  #    "modules/variable-pie.js",
+  #    "modules/variwide.js",
+  #    "modules/windbarb.js",
+  #    "modules/annotations-advanced.js",
+  #    "modules/arrow-symbols.js",
+  #    "modules/current-date-indicator.js",
+  #    "modules/cylinder.js",
+  #    "modules/debugger.js",
+  #    "modules/draggable-points.js",
+  #    "modules/full-screen.js",
+  #    "modules/networkgraph.js",
+  #    "modules/oldie-polyfills.js",
+  #    "modules/pathfinder.js",
+  #    "modules/pattern-fill.js",
+  #    "modules/price-indicator.js",
+  #    "modules/sonification.js",
+  #    "modules/stock-tools.js",
+  #    "modules/treegrid.js",
+  #    "plugins/grouped-categories.js",
+  #    "plugins/motion.js",
+  #    "plugins/multicolor_series.js",
+  #    "plugins/highcharts-regression.js",
+  #    "plugins/pattern-fill-v2.js",
+  #    "plugins/annotations.js",
+  #    "plugins/draggable-legend.js",
+  #    "custom/reset.js",
+  #    "custom/tooltip-delay.js",
+  #    "custom/appear.js",
+  #    "custom/symbols-extra.js",
+  #    "custom/text-symbols.js",
+      "modules/boost.js"
+    )
+  )
+}
+
+highcharter_dep <- function() {
+  htmltools::htmlDependency(
+    name = "highcharter",
+    version = "12.6",
+    src = c(file=system.file("htmlwidgets/lib/highcharts/custom", package="highcharter")),
+    script = "reset.js",
+  )
 }
