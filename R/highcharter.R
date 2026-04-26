@@ -193,7 +193,6 @@ highchart_dep <- function() {
       "modules/offline-exporting.js",
       "modules/drilldown.js",
       "modules/item-series.js",
-      "modules/overlapping-datalabels.js",
       "modules/annotations.js",
       "modules/export-data.js",
       "modules/funnel.js",
@@ -218,6 +217,7 @@ highchart_dep <- function() {
       "modules/dumbbell.js",
       "modules/lollipop.js",
       "modules/series-label.js",
+      "modules/boost.js",
   #    "modules/map.js",
   #    "modules/accessibility.js",
   #    "modules/drag-panes.js",
@@ -264,7 +264,6 @@ highchart_dep <- function() {
   #    "custom/appear.js",
   #    "custom/symbols-extra.js",
   #    "custom/text-symbols.js",
-      "modules/boost.js"
     )
   )
 }
