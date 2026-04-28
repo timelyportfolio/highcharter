@@ -217,7 +217,7 @@ highchart_dep <- function() {
       "modules/dumbbell.js",
       "modules/lollipop.js",
       "modules/series-label.js",
-      "modules/boost.js",
+      "modules/boost.js"
   #    "modules/map.js",
   #    "modules/accessibility.js",
   #    "modules/drag-panes.js",
